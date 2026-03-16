@@ -1,0 +1,35 @@
+aid: apache-orc
+name: Apache ORC
+description: >-
+  Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high compression ratios and fast read performance for large-scale data processing with support for complex data types.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - File Format
+  - Columnar Storage
+  - Hadoop
+  - Compression
+  - Big Data
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-orc:apache-orc
+    name: Apache ORC
+    description: >-
+      ORC provides Java and C++ APIs for reading and writing ORC columnar files, with support for predicate pushdown, column projection, compression codecs, and integration with Hive, Spark, Presto, and other query engines.
+    humanURL: https://orc.apache.org/docs/
+    tags:
+      - Java
+      - C++
+      - Columnar Format
+    properties:
+      - type: Documentation
+        url: https://orc.apache.org/docs/
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
