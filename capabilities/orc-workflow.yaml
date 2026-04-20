@@ -1,0 +1,126 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Apache ORC File Processing Workflow"
+  description: "Workflow capability for reading, writing, converting, and analyzing Apache ORC columnar files."
+  tags:
+    - Apache ORC
+    - Big Data
+    - Columnar Storage
+    - Data Processing
+  created: "2026-04-19"
+  modified: "2026-04-19"
+binds:
+  - namespace: env
+    keys:
+      ORC_API_KEY: ORC_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: orc
+      baseUri: https://localhost:8080/orc
+      description: "Apache ORC REST service"
+      resources:
+        - name: files
+          path: /files
+          description: "ORC file management"
+          operations:
+            - name: listFiles
+              method: GET
+              description: "List ORC files"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: convert
+          path: /convert
+          description: "File conversion"
+          operations:
+            - name: convertToOrc
+              method: POST
+              description: "Convert files to ORC format"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: orc-api
+      description: "Unified REST API for ORC file operations."
+      resources:
+        - path: /v1/files
+          name: files
+          operations:
+            - method: GET
+              name: list-files
+              description: "List ORC files"
+              call: "orc.listFiles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/convert
+          name: convert
+          operations:
+            - method: POST
+              name: convert
+              description: "Convert to ORC"
+              call: "orc.convertToOrc"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9090
+      namespace: orc-mcp
+      transport: http
+      description: "MCP server for AI-assisted ORC file operations."
+      tools:
+        - name: list-orc-files
+          description: "List available ORC files"
+          hints:
+            readOnly: true
+          call: "orc.listFiles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-file-schema
+          description: "Get the schema of an ORC file"
+          hints:
+            readOnly: true
+          call: "orc.getFileSchema"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-file-metadata
+          description: "Get metadata about an ORC file"
+          hints:
+            readOnly: true
+          call: "orc.getFileMetadata"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-column-statistics
+          description: "Get column statistics from an ORC file"
+          hints:
+            readOnly: true
+          call: "orc.getColumnStatistics"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: convert-to-orc
+          description: "Convert CSV, JSON, or Parquet to ORC format"
+          hints:
+            readOnly: false
+          call: "orc.convertToOrc"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: merge-orc-files
+          description: "Merge multiple ORC files into one"
+          hints:
+            readOnly: false
+          call: "orc.mergeOrcFiles"
+          outputParameters:
+            - type: object
+              mapping: "$."

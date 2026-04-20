@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-conversion-result-structure.json",
+  "description": "ConversionResult schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ],
+      "example": "success"
+    },
+    "outputPath": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "rowsWritten": {
+      "type": "int32",
+      "example": 1000000
+    },
+    "duration": {
+      "type": "int32",
+      "description": "Duration in milliseconds",
+      "example": 5234
+    }
+  },
+  "name": "ConversionResult"
+}

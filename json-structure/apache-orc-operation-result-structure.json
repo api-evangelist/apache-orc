@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-operation-result-structure.json",
+  "description": "OperationResult schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ],
+      "example": "success"
+    },
+    "outputPath": {
+      "type": "string",
+      "example": "data/merged.orc"
+    },
+    "rowsWritten": {
+      "type": "int32",
+      "example": 2000000
+    }
+  },
+  "name": "OperationResult"
+}

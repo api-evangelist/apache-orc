@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-merge-request-schema.json",
+  "title": "MergeRequest",
+  "description": "MergeRequest schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "inputPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "data/part-001.orc",
+        "data/part-002.orc"
+      ]
+    },
+    "outputPath": {
+      "type": "string",
+      "example": "data/merged.orc"
+    }
+  },
+  "required": [
+    "inputPaths",
+    "outputPath"
+  ]
+}

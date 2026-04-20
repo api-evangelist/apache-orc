@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-stripe-info-structure.json",
+  "description": "StripeInfo schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "stripeIndex": {
+      "type": "int32",
+      "example": 0
+    },
+    "offset": {
+      "type": "int32",
+      "example": 3
+    },
+    "length": {
+      "type": "int32",
+      "example": 1048576
+    },
+    "rowCount": {
+      "type": "int32",
+      "example": 100000
+    }
+  },
+  "name": "StripeInfo"
+}

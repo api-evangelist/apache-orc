@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-file-metadata-structure.json",
+  "description": "FileMetadata schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "filePath": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "fileVersion": {
+      "type": "string",
+      "example": "0.12"
+    },
+    "writerVersion": {
+      "type": "string",
+      "example": "ORC_135"
+    },
+    "compression": {
+      "type": "string",
+      "example": "ZLIB",
+      "enum": [
+        "NONE",
+        "ZLIB",
+        "SNAPPY",
+        "LZO",
+        "LZ4",
+        "ZSTD"
+      ]
+    },
+    "compressionBlockSize": {
+      "type": "int32",
+      "example": 262144
+    },
+    "rowCount": {
+      "type": "int32",
+      "example": 1000000
+    },
+    "rawDataSize": {
+      "type": "int32",
+      "example": 104857600
+    },
+    "numberOfStripes": {
+      "type": "int32",
+      "example": 10
+    },
+    "stripes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StripeInfo"
+      }
+    }
+  },
+  "name": "FileMetadata"
+}

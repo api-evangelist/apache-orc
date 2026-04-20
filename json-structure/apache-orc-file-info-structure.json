@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-file-info-structure.json",
+  "description": "FileInfo schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "size": {
+      "type": "int32",
+      "description": "File size in bytes",
+      "example": 10485760
+    },
+    "rowCount": {
+      "type": "int32",
+      "example": 1000000
+    },
+    "stripes": {
+      "type": "int32",
+      "example": 10
+    }
+  },
+  "name": "FileInfo"
+}

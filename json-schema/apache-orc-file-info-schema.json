@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-file-info-schema.json",
+  "title": "FileInfo",
+  "description": "FileInfo schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "size": {
+      "type": "integer",
+      "description": "File size in bytes",
+      "example": 10485760
+    },
+    "rowCount": {
+      "type": "integer",
+      "example": 1000000
+    },
+    "stripes": {
+      "type": "integer",
+      "example": 10
+    }
+  }
+}

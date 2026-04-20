@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-orc-schema-structure.json",
+  "description": "OrcSchema schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "typeName": {
+      "type": "string",
+      "description": "Top-level type name",
+      "example": "struct"
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ColumnType"
+      }
+    }
+  },
+  "name": "OrcSchema"
+}

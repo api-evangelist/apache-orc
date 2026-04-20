@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-stripe-info-schema.json",
+  "title": "StripeInfo",
+  "description": "StripeInfo schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "stripeIndex": {
+      "type": "integer",
+      "example": 0
+    },
+    "offset": {
+      "type": "integer",
+      "example": 3
+    },
+    "length": {
+      "type": "integer",
+      "example": 1048576
+    },
+    "rowCount": {
+      "type": "integer",
+      "example": 100000
+    }
+  }
+}

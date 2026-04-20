@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-conversion-request-schema.json",
+  "title": "ConversionRequest",
+  "description": "ConversionRequest schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "sourcePath": {
+      "type": "string",
+      "example": "data/sales.csv"
+    },
+    "outputPath": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "sourceFormat": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "json",
+        "parquet",
+        "avro"
+      ],
+      "example": "csv"
+    },
+    "compression": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "ZLIB",
+        "SNAPPY",
+        "LZ4",
+        "ZSTD"
+      ],
+      "example": "ZLIB"
+    },
+    "rowBatchSize": {
+      "type": "integer",
+      "example": 1024
+    }
+  },
+  "required": [
+    "sourcePath",
+    "outputPath",
+    "sourceFormat"
+  ]
+}

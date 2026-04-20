@@ -1,0 +1,62 @@
+vocabulary: "1.0.0"
+info:
+  provider: "Apache ORC"
+  description: "Vocabulary taxonomy for Apache ORC columnar file format tools API"
+  created: "2026-04-19"
+  modified: "2026-04-19"
+operational:
+  apis:
+    - namespace: orc
+      version: "2.0.0"
+      baseUrl: "https://localhost:8080/orc"
+      status: active
+  resources:
+    - name: files
+      api: orc
+      actions: [list, get, schema, metadata, statistics]
+    - name: conversions
+      api: orc
+      actions: [convert]
+    - name: merges
+      api: orc
+      actions: [merge]
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+    - name: get
+      httpMethod: GET
+      pattern: read
+    - name: convert
+      httpMethod: POST
+      pattern: write
+    - name: merge
+      httpMethod: POST
+      pattern: write
+capability:
+  workflows:
+    - name: ORC File Processing Workflow
+      file: capabilities/orc-workflow.yaml
+      apis: [orc]
+      tools: 6
+      personas: [Data Engineer, Data Analyst]
+  personas:
+    - id: data-engineer
+      name: Data Engineer
+      description: "Manages ORC file creation, conversion, and schema evolution"
+    - id: data-analyst
+      name: Data Analyst
+      description: "Reads ORC files and analyzes column statistics"
+  domains:
+    - Big Data
+    - Columnar Storage
+    - Data Processing
+crossReference:
+  - resource: files
+    operations: [list, schema, metadata, statistics]
+    workflows: [ORC File Processing Workflow]
+    personas: [Data Engineer, Data Analyst]
+  - resource: conversions
+    operations: [convert]
+    workflows: [ORC File Processing Workflow]
+    personas: [Data Engineer]

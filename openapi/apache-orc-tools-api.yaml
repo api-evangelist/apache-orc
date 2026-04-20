@@ -1,0 +1,347 @@
+openapi: 3.0.3
+info:
+  title: Apache ORC Tools API
+  description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    url: https://orc.apache.org/
+x-generated-from: documentation
+servers:
+  - url: https://{host}/orc
+    description: Apache ORC REST service
+    variables:
+      host:
+        default: localhost:8080
+paths:
+  /files:
+    get:
+      operationId: listFiles
+      summary: Apache ORC List ORC Files
+      description: List ORC files available in the configured directory.
+      tags: [Files]
+      responses:
+        '200':
+          description: List of ORC files
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/schema:
+    get:
+      operationId: getFileSchema
+      summary: Apache ORC Get File Schema
+      description: Get the schema of an ORC file including column names, types, and statistics.
+      tags: [Files]
+      parameters:
+        - name: filePath
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Path to the ORC file
+          example: data/sales.orc
+      responses:
+        '200':
+          description: ORC file schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrcSchema'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/metadata:
+    get:
+      operationId: getFileMetadata
+      summary: Apache ORC Get File Metadata
+      description: Get metadata about an ORC file including stripes, row count, and compression info.
+      tags: [Files]
+      parameters:
+        - name: filePath
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Path to the ORC file
+      responses:
+        '200':
+          description: ORC file metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/statistics:
+    get:
+      operationId: getColumnStatistics
+      summary: Apache ORC Get Column Statistics
+      description: Get per-column statistics from an ORC file including min, max, sum, and null counts.
+      tags: [Files]
+      parameters:
+        - name: filePath
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Column statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColumnStatisticsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /convert:
+    post:
+      operationId: convertToOrc
+      summary: Apache ORC Convert File to ORC
+      description: Convert a CSV, JSON, or Parquet file to ORC format.
+      tags: [Conversion]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversionRequest'
+      responses:
+        '200':
+          description: Conversion result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /merge:
+    post:
+      operationId: mergeOrcFiles
+      summary: Apache ORC Merge ORC Files
+      description: Merge multiple ORC files into a single output file.
+      tags: [Operations]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeRequest'
+      responses:
+        '200':
+          description: Merge result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    FileList:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+    FileInfo:
+      type: object
+      properties:
+        path:
+          type: string
+          example: data/sales.orc
+        size:
+          type: integer
+          description: File size in bytes
+          example: 10485760
+        rowCount:
+          type: integer
+          example: 1000000
+        stripes:
+          type: integer
+          example: 10
+    OrcSchema:
+      type: object
+      properties:
+        typeName:
+          type: string
+          description: Top-level type name
+          example: struct
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
+    ColumnType:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Column name
+          example: customer_id
+        type:
+          type: string
+          description: ORC type
+          example: int
+          enum: [boolean, tinyint, smallint, int, bigint, float, double, string, binary, timestamp, date, decimal, varchar, char, list, map, struct, union]
+        nullable:
+          type: boolean
+          example: true
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
+    FileMetadata:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: data/sales.orc
+        fileVersion:
+          type: string
+          example: "0.12"
+        writerVersion:
+          type: string
+          example: ORC_135
+        compression:
+          type: string
+          example: ZLIB
+          enum: [NONE, ZLIB, SNAPPY, LZO, LZ4, ZSTD]
+        compressionBlockSize:
+          type: integer
+          example: 262144
+        rowCount:
+          type: integer
+          example: 1000000
+        rawDataSize:
+          type: integer
+          example: 104857600
+        numberOfStripes:
+          type: integer
+          example: 10
+        stripes:
+          type: array
+          items:
+            $ref: '#/components/schemas/StripeInfo'
+    StripeInfo:
+      type: object
+      properties:
+        stripeIndex:
+          type: integer
+          example: 0
+        offset:
+          type: integer
+          example: 3
+        length:
+          type: integer
+          example: 1048576
+        rowCount:
+          type: integer
+          example: 100000
+    ColumnStatisticsResponse:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: data/sales.orc
+        statistics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnStatistics'
+    ColumnStatistics:
+      type: object
+      properties:
+        columnIndex:
+          type: integer
+          example: 0
+        columnName:
+          type: string
+          example: customer_id
+        valueCount:
+          type: integer
+          example: 999500
+        nullCount:
+          type: integer
+          example: 500
+        hasMinimum:
+          type: boolean
+          example: true
+        minimum:
+          type: string
+          example: "1"
+        maximum:
+          type: string
+          example: "999999"
+    ConversionRequest:
+      type: object
+      required: [sourcePath, outputPath, sourceFormat]
+      properties:
+        sourcePath:
+          type: string
+          example: data/sales.csv
+        outputPath:
+          type: string
+          example: data/sales.orc
+        sourceFormat:
+          type: string
+          enum: [csv, json, parquet, avro]
+          example: csv
+        compression:
+          type: string
+          enum: [NONE, ZLIB, SNAPPY, LZ4, ZSTD]
+          example: ZLIB
+        rowBatchSize:
+          type: integer
+          example: 1024
+    ConversionResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, failure]
+          example: success
+        outputPath:
+          type: string
+          example: data/sales.orc
+        rowsWritten:
+          type: integer
+          example: 1000000
+        duration:
+          type: integer
+          description: Duration in milliseconds
+          example: 5234
+    MergeRequest:
+      type: object
+      required: [inputPaths, outputPath]
+      properties:
+        inputPaths:
+          type: array
+          items:
+            type: string
+          example: ["data/part-001.orc", "data/part-002.orc"]
+        outputPath:
+          type: string
+          example: data/merged.orc
+    OperationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, failure]
+          example: success
+        outputPath:
+          type: string
+          example: data/merged.orc
+        rowsWritten:
+          type: integer
+          example: 2000000

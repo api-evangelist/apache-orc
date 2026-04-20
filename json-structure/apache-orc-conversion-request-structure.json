@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-structure/apache-orc-conversion-request-structure.json",
+  "description": "ConversionRequest schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "sourcePath": {
+      "type": "string",
+      "example": "data/sales.csv"
+    },
+    "outputPath": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "sourceFormat": {
+      "type": "string",
+      "enum": [
+        "csv",
+        "json",
+        "parquet",
+        "avro"
+      ],
+      "example": "csv"
+    },
+    "compression": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "ZLIB",
+        "SNAPPY",
+        "LZ4",
+        "ZSTD"
+      ],
+      "example": "ZLIB"
+    },
+    "rowBatchSize": {
+      "type": "int32",
+      "example": 1024
+    }
+  },
+  "required": [
+    "sourcePath",
+    "outputPath",
+    "sourceFormat"
+  ],
+  "name": "ConversionRequest"
+}

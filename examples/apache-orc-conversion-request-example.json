@@ -1,0 +1,7 @@
+{
+  "sourcePath": "example",
+  "outputPath": "example",
+  "sourceFormat": "csv",
+  "compression": "NONE",
+  "rowBatchSize": 1234
+}

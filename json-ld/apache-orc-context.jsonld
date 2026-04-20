@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "apa": "https://apache-orc.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "FileList": "xsd:FileList",
+    "FileInfo": "xsd:FileInfo",
+    "OrcSchema": "xsd:OrcSchema",
+    "ColumnType": "xsd:ColumnType",
+    "FileMetadata": "xsd:FileMetadata",
+    "StripeInfo": "xsd:StripeInfo",
+    "ColumnStatisticsResponse": "xsd:ColumnStatisticsResponse",
+    "ColumnStatistics": "xsd:ColumnStatistics",
+    "ConversionRequest": "xsd:ConversionRequest",
+    "ConversionResult": "xsd:ConversionResult",
+    "MergeRequest": "xsd:MergeRequest",
+    "OperationResult": "xsd:OperationResult",
+    "files": {
+      "@id": "xsd:files",
+      "@container": "@set"
+    },
+    "path": {
+      "@id": "xsd:path",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "xsd:size",
+      "@type": "xsd:integer"
+    },
+    "rowCount": {
+      "@id": "xsd:rowCount",
+      "@type": "xsd:integer"
+    },
+    "stripes": {
+      "@id": "xsd:stripes",
+      "@type": "xsd:integer"
+    },
+    "typeName": {
+      "@id": "xsd:typeName",
+      "@type": "xsd:string"
+    },
+    "columns": {
+      "@id": "xsd:columns",
+      "@container": "@set"
+    },
+    "name": {
+      "@id": "xsd:name",
+      "@type": "schema:name"
+    },
+    "type": {
+      "@id": "xsd:type",
+      "@type": "xsd:string"
+    },
+    "nullable": {
+      "@id": "xsd:nullable",
+      "@type": "xsd:boolean"
+    },
+    "children": {
+      "@id": "xsd:children",
+      "@container": "@set"
+    },
+    "filePath": {
+      "@id": "xsd:filePath",
+      "@type": "xsd:string"
+    },
+    "fileVersion": {
+      "@id": "xsd:fileVersion",
+      "@type": "xsd:string"
+    },
+    "writerVersion": {
+      "@id": "xsd:writerVersion",
+      "@type": "xsd:string"
+    },
+    "compression": {
+      "@id": "xsd:compression",
+      "@type": "xsd:string"
+    },
+    "compressionBlockSize": {
+      "@id": "xsd:compressionBlockSize",
+      "@type": "xsd:integer"
+    },
+    "rawDataSize": {
+      "@id": "xsd:rawDataSize",
+      "@type": "xsd:integer"
+    },
+    "numberOfStripes": {
+      "@id": "xsd:numberOfStripes",
+      "@type": "xsd:integer"
+    },
+    "stripeIndex": {
+      "@id": "xsd:stripeIndex",
+      "@type": "xsd:integer"
+    },
+    "offset": {
+      "@id": "xsd:offset",
+      "@type": "xsd:integer"
+    },
+    "length": {
+      "@id": "xsd:length",
+      "@type": "xsd:integer"
+    },
+    "statistics": {
+      "@id": "xsd:statistics",
+      "@container": "@set"
+    },
+    "columnIndex": {
+      "@id": "xsd:columnIndex",
+      "@type": "xsd:integer"
+    },
+    "columnName": {
+      "@id": "xsd:columnName",
+      "@type": "xsd:string"
+    },
+    "valueCount": {
+      "@id": "xsd:valueCount",
+      "@type": "xsd:integer"
+    },
+    "nullCount": {
+      "@id": "xsd:nullCount",
+      "@type": "xsd:integer"
+    },
+    "hasMinimum": {
+      "@id": "xsd:hasMinimum",
+      "@type": "xsd:boolean"
+    },
+    "minimum": {
+      "@id": "xsd:minimum",
+      "@type": "xsd:string"
+    },
+    "maximum": {
+      "@id": "xsd:maximum",
+      "@type": "xsd:string"
+    },
+    "sourcePath": {
+      "@id": "xsd:sourcePath",
+      "@type": "xsd:string"
+    },
+    "outputPath": {
+      "@id": "xsd:outputPath",
+      "@type": "xsd:string"
+    },
+    "sourceFormat": {
+      "@id": "xsd:sourceFormat",
+      "@type": "xsd:string"
+    },
+    "rowBatchSize": {
+      "@id": "xsd:rowBatchSize",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "xsd:status",
+      "@type": "xsd:string"
+    },
+    "rowsWritten": {
+      "@id": "xsd:rowsWritten",
+      "@type": "xsd:integer"
+    },
+    "duration": {
+      "@id": "xsd:duration",
+      "@type": "xsd:integer"
+    },
+    "inputPaths": {
+      "@id": "xsd:inputPaths",
+      "@container": "@set"
+    }
+  }
+}

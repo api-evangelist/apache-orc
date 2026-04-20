@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-column-statistics-response-schema.json",
+  "title": "ColumnStatisticsResponse",
+  "description": "ColumnStatisticsResponse schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "filePath": {
+      "type": "string",
+      "example": "data/sales.orc"
+    },
+    "statistics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ColumnStatistics"
+      }
+    }
+  }
+}

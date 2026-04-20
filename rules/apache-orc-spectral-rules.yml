@@ -1,0 +1,61 @@
+extends: "spectral:oas"
+rules:
+  info-title-required:
+    description: "API must have a title"
+    severity: error
+    given: "$.info"
+    then:
+      field: title
+      function: truthy
+  operation-summary-required:
+    description: "Operations must have summaries"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+  operation-operationId-required:
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+  operation-tags-required:
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+  operation-summary-apache-prefix:
+    description: "Summaries should start with Apache ORC"
+    severity: info
+    given: "$.paths[*][get,post,put,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Apache ORC"
+  paths-kebab-case:
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9{}-]+)+$"
+  response-success-required:
+    severity: error
+    given: "$.paths[*][*].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required: ["200"]
+  schema-type-defined:
+    severity: warn
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["type"]
+            - required: ["$ref"]

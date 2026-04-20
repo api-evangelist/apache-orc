@@ -1,0 +1,9 @@
+{
+  "columnIndex": 1234,
+  "columnName": "example-name",
+  "valueCount": 1234,
+  "nullCount": 1234,
+  "hasMinimum": true,
+  "minimum": "example",
+  "maximum": "example"
+}

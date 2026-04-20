@@ -1,0 +1,13 @@
+{
+  "filePath": "example",
+  "fileVersion": "example",
+  "writerVersion": "example",
+  "compression": "NONE",
+  "compressionBlockSize": 1234,
+  "rowCount": 1234,
+  "rawDataSize": 1234,
+  "numberOfStripes": 1234,
+  "stripes": [
+    {}
+  ]
+}

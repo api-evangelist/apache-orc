@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/json-schema/apache-orc-column-type-schema.json",
+  "title": "ColumnType",
+  "description": "ColumnType schema from Apache ORC",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Column name",
+      "example": "customer_id"
+    },
+    "type": {
+      "type": "string",
+      "description": "ORC type",
+      "example": "int",
+      "enum": [
+        "boolean",
+        "tinyint",
+        "smallint",
+        "int",
+        "bigint",
+        "float",
+        "double",
+        "string",
+        "binary",
+        "timestamp",
+        "date",
+        "decimal",
+        "varchar",
+        "char",
+        "list",
+        "map",
+        "struct",
+        "union"
+      ]
+    },
+    "nullable": {
+      "type": "boolean",
+      "example": true
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ColumnType"
+      }
+    }
+  }
+}
