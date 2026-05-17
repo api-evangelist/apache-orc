@@ -53,7 +53,7 @@ common:
   url: vocabulary/apache-orc-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/orc-workflow.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/apache-orc-context.jsonld
 - type: Features
   data:
