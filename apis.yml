@@ -1,8 +1,7 @@
 aid: apache-orc
 name: Apache ORC
-description: >-
-  Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high compression ratios and fast read performance for large-scale data processing with support
-  for complex data types.
+description: Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high
+  compression ratios and fast read performance for large-scale data processing with support for complex data types.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -16,16 +15,14 @@ tags:
 - Apache
 - Open Source
 created: '2026-03-16'
-modified: '2026-04-19'
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml
+modified: '2026-05-19'
+url: https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
 - aid: apache-orc:apache-orc
   name: Apache ORC
-  description: >-
-    ORC provides Java and C++ APIs for reading and writing ORC columnar files, with support for predicate pushdown, column projection, compression codecs, and integration with Hive, Spark, Presto, and other
-    query engines.
+  description: ORC provides Java and C++ APIs for reading and writing ORC columnar files, with support for predicate pushdown,
+    column projection, compression codecs, and integration with Hive, Spark, Presto, and other query engines.
   humanURL: https://orc.apache.org/docs/
   tags:
   - C++
@@ -39,6 +36,12 @@ apis:
     url: https://orc.apache.org/docs/
   - type: OpenAPI
     url: openapi/apache-orc-tools-api.yaml
+  - type: NaftikoCapability
+    url: capabilities/tools-conversion.yaml
+  - type: NaftikoCapability
+    url: capabilities/tools-files.yaml
+  - type: NaftikoCapability
+    url: capabilities/tools-operations.yaml
 maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
@@ -51,8 +54,6 @@ common:
   url: rules/apache-orc-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/apache-orc-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/orc-workflow.yaml
 - type: JSONLD
   url: json-ld/apache-orc-context.jsonld
 - type: Features

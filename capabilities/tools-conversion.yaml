@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache ORC Tools API — Conversion
+  description: 'Apache ORC Tools API — Conversion. 1 operations. Lead operation: Apache ORC Convert File to ORC. Self-contained
+    Naftiko capability covering one Apache Orc business surface.'
+  tags:
+  - Apache Orc
+  - Conversion
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ORC_API_KEY: APACHE_ORC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tools-conversion
+    baseUri: https://{host}/orc
+    description: Apache ORC Tools API — Conversion business capability. Self-contained, no shared references.
+    resources:
+    - name: convert
+      path: /convert
+      operations:
+      - name: converttoorc
+        method: POST
+        description: Apache ORC Convert File to ORC
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: tools-conversion-rest
+    port: 8080
+    description: REST adapter for Apache ORC Tools API — Conversion. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/convert
+      name: convert
+      description: REST surface for convert.
+      operations:
+      - method: POST
+        name: converttoorc
+        description: Apache ORC Convert File to ORC
+        call: tools-conversion.converttoorc
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tools-conversion-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache ORC Tools API — Conversion. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-orc-convert-file-orc
+      description: Apache ORC Convert File to ORC
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tools-conversion.converttoorc
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

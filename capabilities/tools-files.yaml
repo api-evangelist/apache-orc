@@ -1,0 +1,192 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache ORC Tools API — Files
+  description: 'Apache ORC Tools API — Files. 4 operations. Lead operation: Apache ORC List ORC Files. Self-contained Naftiko
+    capability covering one Apache Orc business surface.'
+  tags:
+  - Apache Orc
+  - Files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ORC_API_KEY: APACHE_ORC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tools-files
+    baseUri: https://{host}/orc
+    description: Apache ORC Tools API — Files business capability. Self-contained, no shared references.
+    resources:
+    - name: files
+      path: /files
+      operations:
+      - name: listfiles
+        method: GET
+        description: Apache ORC List ORC Files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: files-filePath-metadata
+      path: /files/{filePath}/metadata
+      operations:
+      - name: getfilemetadata
+        method: GET
+        description: Apache ORC Get File Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filePath
+          in: path
+          type: string
+          description: Path to the ORC file
+          required: true
+    - name: files-filePath-schema
+      path: /files/{filePath}/schema
+      operations:
+      - name: getfileschema
+        method: GET
+        description: Apache ORC Get File Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filePath
+          in: path
+          type: string
+          description: Path to the ORC file
+          required: true
+    - name: files-filePath-statistics
+      path: /files/{filePath}/statistics
+      operations:
+      - name: getcolumnstatistics
+        method: GET
+        description: Apache ORC Get Column Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filePath
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: tools-files-rest
+    port: 8080
+    description: REST adapter for Apache ORC Tools API — Files. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/files
+      name: files
+      description: REST surface for files.
+      operations:
+      - method: GET
+        name: listfiles
+        description: Apache ORC List ORC Files
+        call: tools-files.listfiles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{filepath}/metadata
+      name: files-filepath-metadata
+      description: REST surface for files-filePath-metadata.
+      operations:
+      - method: GET
+        name: getfilemetadata
+        description: Apache ORC Get File Metadata
+        call: tools-files.getfilemetadata
+        with:
+          filePath: rest.filePath
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{filepath}/schema
+      name: files-filepath-schema
+      description: REST surface for files-filePath-schema.
+      operations:
+      - method: GET
+        name: getfileschema
+        description: Apache ORC Get File Schema
+        call: tools-files.getfileschema
+        with:
+          filePath: rest.filePath
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{filepath}/statistics
+      name: files-filepath-statistics
+      description: REST surface for files-filePath-statistics.
+      operations:
+      - method: GET
+        name: getcolumnstatistics
+        description: Apache ORC Get Column Statistics
+        call: tools-files.getcolumnstatistics
+        with:
+          filePath: rest.filePath
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tools-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache ORC Tools API — Files. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-orc-list-orc-files
+      description: Apache ORC List ORC Files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tools-files.listfiles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-orc-get-file-metadata
+      description: Apache ORC Get File Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tools-files.getfilemetadata
+      with:
+        filePath: tools.filePath
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-orc-get-file-schema
+      description: Apache ORC Get File Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tools-files.getfileschema
+      with:
+        filePath: tools.filePath
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-orc-get-column-statistics
+      description: Apache ORC Get Column Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tools-files.getcolumnstatistics
+      with:
+        filePath: tools.filePath
+      outputParameters:
+      - type: object
+        mapping: $.

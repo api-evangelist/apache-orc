@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache ORC Tools API — Operations
+  description: 'Apache ORC Tools API — Operations. 1 operations. Lead operation: Apache ORC Merge ORC Files. Self-contained
+    Naftiko capability covering one Apache Orc business surface.'
+  tags:
+  - Apache Orc
+  - Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ORC_API_KEY: APACHE_ORC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tools-operations
+    baseUri: https://{host}/orc
+    description: Apache ORC Tools API — Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: merge
+      path: /merge
+      operations:
+      - name: mergeorcfiles
+        method: POST
+        description: Apache ORC Merge ORC Files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: tools-operations-rest
+    port: 8080
+    description: REST adapter for Apache ORC Tools API — Operations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/merge
+      name: merge
+      description: REST surface for merge.
+      operations:
+      - method: POST
+        name: mergeorcfiles
+        description: Apache ORC Merge ORC Files
+        call: tools-operations.mergeorcfiles
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tools-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache ORC Tools API — Operations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-orc-merge-orc-files
+      description: Apache ORC Merge ORC Files
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tools-operations.mergeorcfiles
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
