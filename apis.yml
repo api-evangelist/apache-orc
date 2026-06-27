@@ -36,11 +36,11 @@ apis:
     url: https://orc.apache.org/docs/
   - type: OpenAPI
     url: openapi/apache-orc-tools-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/tools-conversion.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/tools-files.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/tools-operations.yaml
 maintainers:
 - FN: Kin Lane
