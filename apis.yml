@@ -46,6 +46,10 @@ maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
 common:
+- type: VulnerabilityDisclosure
+  url: security/apache-orc-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apache-orc-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/apache/orc
 - type: Documentation
@@ -56,6 +60,8 @@ common:
   url: vocabulary/apache-orc-vocabulary.yaml
 - type: JSONLD
   url: json-ld/apache-orc-context.jsonld
+- type: Blog
+  url: https://orc.apache.org/news/
 - type: Features
   data:
   - name: Columnar Storage
