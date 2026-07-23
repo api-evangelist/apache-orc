@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: Apache ORC Tools Conversion Files API
+  description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    url: https://orc.apache.org/
+servers:
+- url: https://{host}/orc
+  description: Apache ORC REST service
+  variables:
+    host:
+      default: localhost:8080
+tags:
+- name: Files
+paths:
+  /files:
+    get:
+      operationId: listFiles
+      summary: Apache ORC List ORC Files
+      description: List ORC files available in the configured directory.
+      tags:
+      - Files
+      responses:
+        '200':
+          description: List of ORC files
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/schema:
+    get:
+      operationId: getFileSchema
+      summary: Apache ORC Get File Schema
+      description: Get the schema of an ORC file including column names, types, and statistics.
+      tags:
+      - Files
+      parameters:
+      - name: filePath
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Path to the ORC file
+        example: data/sales.orc
+      responses:
+        '200':
+          description: ORC file schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrcSchema'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/metadata:
+    get:
+      operationId: getFileMetadata
+      summary: Apache ORC Get File Metadata
+      description: Get metadata about an ORC file including stripes, row count, and compression info.
+      tags:
+      - Files
+      parameters:
+      - name: filePath
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Path to the ORC file
+      responses:
+        '200':
+          description: ORC file metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /files/{filePath}/statistics:
+    get:
+      operationId: getColumnStatistics
+      summary: Apache ORC Get Column Statistics
+      description: Get per-column statistics from an ORC file including min, max, sum, and null counts.
+      tags:
+      - Files
+      parameters:
+      - name: filePath
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Column statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColumnStatisticsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    OrcSchema:
+      type: object
+      properties:
+        typeName:
+          type: string
+          description: Top-level type name
+          example: struct
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
+    ColumnStatistics:
+      type: object
+      properties:
+        columnIndex:
+          type: integer
+          example: 0
+        columnName:
+          type: string
+          example: customer_id
+        valueCount:
+          type: integer
+          example: 999500
+        nullCount:
+          type: integer
+          example: 500
+        hasMinimum:
+          type: boolean
+          example: true
+        minimum:
+          type: string
+          example: '1'
+        maximum:
+          type: string
+          example: '999999'
+    ColumnType:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Column name
+          example: customer_id
+        type:
+          type: string
+          description: ORC type
+          example: int
+          enum:
+          - boolean
+          - tinyint
+          - smallint
+          - int
+          - bigint
+          - float
+          - double
+          - string
+          - binary
+          - timestamp
+          - date
+          - decimal
+          - varchar
+          - char
+          - list
+          - map
+          - struct
+          - union
+        nullable:
+          type: boolean
+          example: true
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
+    FileMetadata:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: data/sales.orc
+        fileVersion:
+          type: string
+          example: '0.12'
+        writerVersion:
+          type: string
+          example: ORC_135
+        compression:
+          type: string
+          example: ZLIB
+          enum:
+          - NONE
+          - ZLIB
+          - SNAPPY
+          - LZO
+          - LZ4
+          - ZSTD
+        compressionBlockSize:
+          type: integer
+          example: 262144
+        rowCount:
+          type: integer
+          example: 1000000
+        rawDataSize:
+          type: integer
+          example: 104857600
+        numberOfStripes:
+          type: integer
+          example: 10
+        stripes:
+          type: array
+          items:
+            $ref: '#/components/schemas/StripeInfo'
+    FileInfo:
+      type: object
+      properties:
+        path:
+          type: string
+          example: data/sales.orc
+        size:
+          type: integer
+          description: File size in bytes
+          example: 10485760
+        rowCount:
+          type: integer
+          example: 1000000
+        stripes:
+          type: integer
+          example: 10
+    StripeInfo:
+      type: object
+      properties:
+        stripeIndex:
+          type: integer
+          example: 0
+        offset:
+          type: integer
+          example: 3
+        length:
+          type: integer
+          example: 1048576
+        rowCount:
+          type: integer
+          example: 100000
+    FileList:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+    ColumnStatisticsResponse:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: data/sales.orc
+        statistics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnStatistics'
+x-generated-from: documentation

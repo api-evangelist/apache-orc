@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: Apache ORC Tools Conversion API
+  description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    url: https://orc.apache.org/
+servers:
+- url: https://{host}/orc
+  description: Apache ORC REST service
+  variables:
+    host:
+      default: localhost:8080
+tags:
+- name: Conversion
+paths:
+  /convert:
+    post:
+      operationId: convertToOrc
+      summary: Apache ORC Convert File to ORC
+      description: Convert a CSV, JSON, or Parquet file to ORC format.
+      tags:
+      - Conversion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversionRequest'
+      responses:
+        '200':
+          description: Conversion result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ConversionResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - failure
+          example: success
+        outputPath:
+          type: string
+          example: data/sales.orc
+        rowsWritten:
+          type: integer
+          example: 1000000
+        duration:
+          type: integer
+          description: Duration in milliseconds
+          example: 5234
+    ConversionRequest:
+      type: object
+      required:
+      - sourcePath
+      - outputPath
+      - sourceFormat
+      properties:
+        sourcePath:
+          type: string
+          example: data/sales.csv
+        outputPath:
+          type: string
+          example: data/sales.orc
+        sourceFormat:
+          type: string
+          enum:
+          - csv
+          - json
+          - parquet
+          - avro
+          example: csv
+        compression:
+          type: string
+          enum:
+          - NONE
+          - ZLIB
+          - SNAPPY
+          - LZ4
+          - ZSTD
+          example: ZLIB
+        rowBatchSize:
+          type: integer
+          example: 1024
+x-generated-from: documentation

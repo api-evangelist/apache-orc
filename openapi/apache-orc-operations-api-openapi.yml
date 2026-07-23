@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Apache ORC Tools Conversion Operations API
+  description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
+  version: 2.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    url: https://orc.apache.org/
+servers:
+- url: https://{host}/orc
+  description: Apache ORC REST service
+  variables:
+    host:
+      default: localhost:8080
+tags:
+- name: Operations
+paths:
+  /merge:
+    post:
+      operationId: mergeOrcFiles
+      summary: Apache ORC Merge ORC Files
+      description: Merge multiple ORC files into a single output file.
+      tags:
+      - Operations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeRequest'
+      responses:
+        '200':
+          description: Merge result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MergeRequest:
+      type: object
+      required:
+      - inputPaths
+      - outputPath
+      properties:
+        inputPaths:
+          type: array
+          items:
+            type: string
+          example:
+          - data/part-001.orc
+          - data/part-002.orc
+        outputPath:
+          type: string
+          example: data/merged.orc
+    OperationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - failure
+          example: success
+        outputPath:
+          type: string
+          example: data/merged.orc
+        rowsWritten:
+          type: integer
+          example: 2000000
+x-generated-from: documentation
