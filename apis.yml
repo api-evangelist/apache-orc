@@ -3,9 +3,21 @@ name: Apache ORC
 description: Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high
   compression ratios and fast read performance for large-scale data processing with support for complex data types.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-orc.png
 tags:
 - Big Data
 - Columnar Storage
@@ -19,23 +31,51 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: apache-orc:apache-orc
-  name: Apache ORC
-  description: ORC provides Java and C++ APIs for reading and writing ORC columnar files, with support for predicate pushdown,
-    column projection, compression codecs, and integration with Hive, Spark, Presto, and other query engines.
+- aid: apache-orc:apache-orc-conversion-api
+  name: Apache ORC Conversion API
+  description: The Conversion API from Apache ORC — 1 operation(s) for conversion.
   humanURL: https://orc.apache.org/docs/
   tags:
-  - C++
-  - Columnar Format
-  - Java
-  - Apache
-  - Open Source
-  - Big Data
+  - Conversion
   properties:
+  - type: OpenAPI
+    url: openapi/apache-orc-conversion-api-openapi.yml
   - type: Documentation
     url: https://orc.apache.org/docs/
+  - type: X-NaftikoCapability
+    url: capabilities/tools-conversion.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/tools-files.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/tools-operations.yaml
+- aid: apache-orc:apache-orc-files-api
+  name: Apache ORC Files API
+  description: The Files API from Apache ORC — 4 operation(s) for files.
+  humanURL: https://orc.apache.org/docs/
+  tags:
+  - Files
+  properties:
   - type: OpenAPI
-    url: openapi/apache-orc-tools-api.yaml
+    url: openapi/apache-orc-files-api-openapi.yml
+  - type: Documentation
+    url: https://orc.apache.org/docs/
+  - type: X-NaftikoCapability
+    url: capabilities/tools-conversion.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/tools-files.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/tools-operations.yaml
+- aid: apache-orc:apache-orc-operations-api
+  name: Apache ORC Operations API
+  description: The Operations API from Apache ORC — 1 operation(s) for operations.
+  humanURL: https://orc.apache.org/docs/
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-orc-operations-api-openapi.yml
+  - type: Documentation
+    url: https://orc.apache.org/docs/
   - type: X-NaftikoCapability
     url: capabilities/tools-conversion.yaml
   - type: X-NaftikoCapability
