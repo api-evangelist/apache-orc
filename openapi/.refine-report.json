@@ -1,0 +1,18 @@
+{
+  "provider": "apache-orc",
+  "sources": [
+    "apache-orc-conversion-api-openapi.yml",
+    "apache-orc-files-api-openapi.yml",
+    "apache-orc-operations-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-orc-conversion-api-openapi.yml",
+    "apache-orc-files-api-openapi.yml",
+    "apache-orc-operations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
