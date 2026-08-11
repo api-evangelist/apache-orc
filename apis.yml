@@ -42,12 +42,6 @@ apis:
     url: openapi/apache-orc-conversion-api-openapi.yml
   - type: Documentation
     url: https://orc.apache.org/docs/
-  - type: X-NaftikoCapability
-    url: capabilities/tools-conversion.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-files.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-operations.yaml
 - aid: apache-orc:apache-orc-files-api
   name: Apache ORC Files API
   description: The Files API from Apache ORC — 4 operation(s) for files.
@@ -59,12 +53,6 @@ apis:
     url: openapi/apache-orc-files-api-openapi.yml
   - type: Documentation
     url: https://orc.apache.org/docs/
-  - type: X-NaftikoCapability
-    url: capabilities/tools-conversion.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-files.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-operations.yaml
 - aid: apache-orc:apache-orc-operations-api
   name: Apache ORC Operations API
   description: The Operations API from Apache ORC — 1 operation(s) for operations.
@@ -76,12 +64,6 @@ apis:
     url: openapi/apache-orc-operations-api-openapi.yml
   - type: Documentation
     url: https://orc.apache.org/docs/
-  - type: X-NaftikoCapability
-    url: capabilities/tools-conversion.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-files.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/tools-operations.yaml
 maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
