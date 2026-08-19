@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache ORC Tools Conversion Files API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache ORC List ORC Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/orc/files"
+          },
+          "docs": "List ORC files available in the configured directory."
+        },
+        {
+          "info": {
+            "name": "Apache ORC Get File Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/orc/files/:filePath/schema",
+            "params": [
+              {
+                "name": "filePath",
+                "value": "data/sales.orc",
+                "type": "path",
+                "description": "Path to the ORC file"
+              }
+            ]
+          },
+          "docs": "Get the schema of an ORC file including column names, types, and statistics."
+        },
+        {
+          "info": {
+            "name": "Apache ORC Get File Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/orc/files/:filePath/metadata",
+            "params": [
+              {
+                "name": "filePath",
+                "value": "",
+                "type": "path",
+                "description": "Path to the ORC file"
+              }
+            ]
+          },
+          "docs": "Get metadata about an ORC file including stripes, row count, and compression info."
+        },
+        {
+          "info": {
+            "name": "Apache ORC Get Column Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{host}/orc/files/:filePath/statistics",
+            "params": [
+              {
+                "name": "filePath",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get per-column statistics from an ORC file including min, max, sum, and null counts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

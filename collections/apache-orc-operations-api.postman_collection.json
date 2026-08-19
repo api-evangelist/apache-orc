@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "4e067705-6d05-41f4-a6d8-1d4e47169fd3",
+      "name": "Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "debda8d4-9a50-4bd1-b778-2b42168f8577",
+          "name": "Apache ORC Merge ORC Files",
+          "request": {
+            "name": "Apache ORC Merge ORC Files",
+            "description": {
+              "content": "Merge multiple ORC files into a single output file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"outputPath\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d32b4de-251e-4b81-aedf-7a6831fb754f",
+              "name": "Merge result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputPaths\": [\n    \"data/part-001.orc\",\n    \"data/part-002.orc\"\n  ],\n  \"outputPath\": \"data/merged.orc\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"outputPath\": \"data/merged.orc\",\n  \"rowsWritten\": 2000000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/orc",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c66da1c-0d3a-421f-86f5-1944a84a2d5d",
+    "name": "Apache ORC Tools Conversion Operations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "40418b80-fdb9-4cf2-820e-f680f1f8ba7e",
+      "name": "Conversion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59f08b77-7d91-4896-ac08-3a9a90d75e77",
+          "name": "Apache ORC Convert File to ORC",
+          "request": {
+            "name": "Apache ORC Convert File to ORC",
+            "description": {
+              "content": "Convert a CSV, JSON, or Parquet file to ORC format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourcePath\": \"<string>\",\n  \"outputPath\": \"<string>\",\n  \"sourceFormat\": \"<string>\",\n  \"compression\": \"<string>\",\n  \"rowBatchSize\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54f71b55-4d78-4a37-9e10-ceb725e8cf72",
+              "name": "Conversion result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourcePath\": \"data/sales.csv\",\n  \"outputPath\": \"data/sales.orc\",\n  \"sourceFormat\": \"csv\",\n  \"compression\": \"ZLIB\",\n  \"rowBatchSize\": 1024\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"outputPath\": \"data/sales.orc\",\n  \"rowsWritten\": 1000000,\n  \"duration\": 5234\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/orc",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02f8ee13-e01c-424a-b5ec-489d726be47c",
+    "name": "Apache ORC Tools Conversion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "item": [
+    {
+      "id": "34afdc7e-974b-402f-a91c-093f7f9d5223",
+      "name": "Files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4528643d-19b9-4061-92ca-e5e29f8b3277",
+          "name": "Apache ORC List ORC Files",
+          "request": {
+            "name": "Apache ORC List ORC Files",
+            "description": {
+              "content": "List ORC files available in the configured directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ee89c9f-0ca2-47e4-af6c-e3c6e84cf519",
+              "name": "List of ORC files",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"files\": [\n    {\n      \"path\": \"data/sales.orc\",\n      \"size\": 10485760,\n      \"rowCount\": 1000000,\n      \"stripes\": 10\n    },\n    {\n      \"path\": \"data/sales.orc\",\n      \"size\": 10485760,\n      \"rowCount\": 1000000,\n      \"stripes\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef480e82-16c1-4ce8-8f65-58e43225eba7",
+          "name": "Apache ORC Get File Schema",
+          "request": {
+            "name": "Apache ORC Get File Schema",
+            "description": {
+              "content": "Get the schema of an ORC file including column names, types, and statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":filePath",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) Path to the ORC file"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1407b34-f71d-4b99-aef0-1ca72d50db03",
+              "name": "ORC file schema",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":filePath",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) Path to the ORC file"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"typeName\": \"struct\",\n  \"columns\": [\n    {\n      \"name\": \"customer_id\",\n      \"type\": \"int\",\n      \"nullable\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ColumnType detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ColumnType detected>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"customer_id\",\n      \"type\": \"int\",\n      \"nullable\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ColumnType detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ColumnType detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0523a916-1c21-42e8-b351-f7f695a600f2",
+          "name": "Apache ORC Get File Metadata",
+          "request": {
+            "name": "Apache ORC Get File Metadata",
+            "description": {
+              "content": "Get metadata about an ORC file including stripes, row count, and compression info.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":filePath",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) Path to the ORC file"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02b3f56f-9499-4458-8a73-594d50ed8f99",
+              "name": "ORC file metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":filePath",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) Path to the ORC file"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"data/sales.orc\",\n  \"fileVersion\": \"0.12\",\n  \"writerVersion\": \"ORC_135\",\n  \"compression\": \"ZLIB\",\n  \"compressionBlockSize\": 262144,\n  \"rowCount\": 1000000,\n  \"rawDataSize\": 104857600,\n  \"numberOfStripes\": 10,\n  \"stripes\": [\n    {\n      \"stripeIndex\": 0,\n      \"offset\": 3,\n      \"length\": 1048576,\n      \"rowCount\": 100000\n    },\n    {\n      \"stripeIndex\": 0,\n      \"offset\": 3,\n      \"length\": 1048576,\n      \"rowCount\": 100000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fdb6e97-3aa6-4d83-8897-63c787e00085",
+          "name": "Apache ORC Get Column Statistics",
+          "request": {
+            "name": "Apache ORC Get Column Statistics",
+            "description": {
+              "content": "Get per-column statistics from an ORC file including min, max, sum, and null counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":filePath",
+                "statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filePath",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ac45a51-33d6-4fb5-9622-31ec515f4449",
+              "name": "Column statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":filePath",
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filePath",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"data/sales.orc\",\n  \"statistics\": [\n    {\n      \"columnIndex\": 0,\n      \"columnName\": \"customer_id\",\n      \"valueCount\": 999500,\n      \"nullCount\": 500,\n      \"hasMinimum\": true,\n      \"minimum\": \"1\",\n      \"maximum\": \"999999\"\n    },\n    {\n      \"columnIndex\": 0,\n      \"columnName\": \"customer_id\",\n      \"valueCount\": 999500,\n      \"nullCount\": 500,\n      \"hasMinimum\": true,\n      \"minimum\": \"1\",\n      \"maximum\": \"999999\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost:8080",
+      "key": "host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{host}}/orc",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "62b94675-673d-4f2d-8137-47b1f7f9fb40",
+    "name": "Apache ORC Tools Conversion Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.",
+      "type": "text/plain"
+    }
+  }
+}

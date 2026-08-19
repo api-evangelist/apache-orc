@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache ORC Tools Conversion Operations API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache ORC Merge ORC Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}/orc/merge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge multiple ORC files into a single output file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

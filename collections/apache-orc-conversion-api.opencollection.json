@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache ORC Tools Conversion API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache ORC Convert File to ORC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{host}/orc/convert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert a CSV, JSON, or Parquet file to ORC format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
