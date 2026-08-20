@@ -25,6 +25,14 @@ tags:
 - File Format
 - Hadoop
 - Apache
+- Open-Source
+tags_raw:
+- Big Data
+- Columnar Storage
+- Compression
+- File Format
+- Hadoop
+- Apache
 - Open Source
 created: '2026-03-16'
 modified: '2026-05-19'
@@ -47,6 +55,8 @@ apis:
   description: The Files API from Apache ORC — 4 operation(s) for files.
   humanURL: https://orc.apache.org/docs/
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -57,7 +67,8 @@ apis:
   name: Apache ORC Operations API
   description: The Operations API from Apache ORC — 1 operation(s) for operations.
   humanURL: https://orc.apache.org/docs/
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
