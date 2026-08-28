@@ -3,6 +3,17 @@ name: Apache ORC
 description: Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high
   compression ratios and fast read performance for large-scale data processing with support for complex data types.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
