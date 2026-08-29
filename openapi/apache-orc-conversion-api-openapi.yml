@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Apache ORC Tools Conversion API
   description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
@@ -42,25 +42,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ConversionResult:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - failure
-          example: success
-        outputPath:
-          type: string
-          example: data/sales.orc
-        rowsWritten:
-          type: integer
-          example: 1000000
-        duration:
-          type: integer
-          description: Duration in milliseconds
-          example: 5234
     ConversionRequest:
       type: object
       required:
@@ -94,4 +75,23 @@ components:
         rowBatchSize:
           type: integer
           example: 1024
+    ConversionResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - failure
+          example: success
+        outputPath:
+          type: string
+          example: data/sales.orc
+        rowsWritten:
+          type: integer
+          example: 1000000
+        duration:
+          type: integer
+          description: Duration in milliseconds
+          example: 5234
 x-generated-from: documentation
