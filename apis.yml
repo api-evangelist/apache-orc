@@ -90,6 +90,8 @@ maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
 common:
+- type: Website
+  url: https://www.apache.org/
 - type: AgenticAccess
   url: agentic-access/apache-orc-agentic-access.yml
 - type: VulnerabilityDisclosure
