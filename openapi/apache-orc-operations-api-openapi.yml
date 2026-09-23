@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Apache ORC Tools Conversion Operations API
+  title: Apache ORC Tools Operations API
   description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
   version: 2.0.0
   license:

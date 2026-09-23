@@ -1,9 +1,7 @@
 {
   "provider": "apache-orc",
   "sources": [
-    "apache-orc-conversion-api-openapi.yml",
-    "apache-orc-files-api-openapi.yml",
-    "apache-orc-operations-api-openapi.yml"
+    "_ae-authored/apache-orc-tools-api.yaml"
   ],
   "outputs": [
     "apache-orc-conversion-api-openapi.yml",
@@ -14,10 +12,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "apache-orc-conversion-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-orc-files-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-orc-operations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-orc-tools-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-orc-tools-api.yaml: declared missing tag: Conversion",
+    "apache-orc-tools-api.yaml: declared missing tag: Files",
+    "apache-orc-tools-api.yaml: declared missing tag: Operations",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "apache-orc-conversion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-orc-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-orc-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

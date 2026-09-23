@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Apache ORC Tools Conversion Files API
+  title: Apache ORC Tools Files API
   description: Apache ORC is a self-describing, type-aware columnar file format for Hadoop workloads. This API represents the ORC tools REST service for reading, writing, and analyzing ORC files with support for predicate pushdown, compression, and schema evolution.
   version: 2.0.0
   license:
@@ -108,6 +108,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FileList:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
     StripeInfo:
       type: object
       properties:
@@ -123,13 +130,30 @@ components:
         rowCount:
           type: integer
           example: 100000
-    FileList:
+    ColumnStatistics:
       type: object
       properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileInfo'
+        columnIndex:
+          type: integer
+          example: 0
+        columnName:
+          type: string
+          example: customer_id
+        valueCount:
+          type: integer
+          example: 999500
+        nullCount:
+          type: integer
+          example: 500
+        hasMinimum:
+          type: boolean
+          example: true
+        minimum:
+          type: string
+          example: '1'
+        maximum:
+          type: string
+          example: '999999'
     OrcSchema:
       type: object
       properties:
@@ -138,53 +162,6 @@ components:
           description: Top-level type name
           example: struct
         columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnType'
-    ColumnStatisticsResponse:
-      type: object
-      properties:
-        filePath:
-          type: string
-          example: data/sales.orc
-        statistics:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnStatistics'
-    ColumnType:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Column name
-          example: customer_id
-        type:
-          type: string
-          description: ORC type
-          example: int
-          enum:
-          - boolean
-          - tinyint
-          - smallint
-          - int
-          - bigint
-          - float
-          - double
-          - string
-          - binary
-          - timestamp
-          - date
-          - decimal
-          - varchar
-          - char
-          - list
-          - map
-          - struct
-          - union
-        nullable:
-          type: boolean
-          example: true
-        children:
           type: array
           items:
             $ref: '#/components/schemas/ColumnType'
@@ -226,30 +203,43 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StripeInfo'
-    ColumnStatistics:
+    ColumnType:
       type: object
       properties:
-        columnIndex:
-          type: integer
-          example: 0
-        columnName:
+        name:
           type: string
+          description: Column name
           example: customer_id
-        valueCount:
-          type: integer
-          example: 999500
-        nullCount:
-          type: integer
-          example: 500
-        hasMinimum:
+        type:
+          type: string
+          description: ORC type
+          example: int
+          enum:
+          - boolean
+          - tinyint
+          - smallint
+          - int
+          - bigint
+          - float
+          - double
+          - string
+          - binary
+          - timestamp
+          - date
+          - decimal
+          - varchar
+          - char
+          - list
+          - map
+          - struct
+          - union
+        nullable:
           type: boolean
           example: true
-        minimum:
-          type: string
-          example: '1'
-        maximum:
-          type: string
-          example: '999999'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
     FileInfo:
       type: object
       properties:
@@ -266,4 +256,14 @@ components:
         stripes:
           type: integer
           example: 10
+    ColumnStatisticsResponse:
+      type: object
+      properties:
+        filePath:
+          type: string
+          example: data/sales.orc
+        statistics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnStatistics'
 x-generated-from: documentation
