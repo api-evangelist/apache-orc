@@ -42,21 +42,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OperationResult:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - failure
-          example: success
-        outputPath:
-          type: string
-          example: data/merged.orc
-        rowsWritten:
-          type: integer
-          example: 2000000
     MergeRequest:
       type: object
       required:
@@ -73,4 +58,19 @@ components:
         outputPath:
           type: string
           example: data/merged.orc
+    OperationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - failure
+          example: success
+        outputPath:
+          type: string
+          example: data/merged.orc
+        rowsWritten:
+          type: integer
+          example: 2000000
 x-generated-from: documentation

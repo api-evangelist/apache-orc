@@ -108,13 +108,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    FileList:
-      type: object
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileInfo'
     FileMetadata:
       type: object
       properties:
@@ -153,17 +146,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StripeInfo'
-    OrcSchema:
+    ColumnStatisticsResponse:
       type: object
       properties:
-        typeName:
+        filePath:
           type: string
-          description: Top-level type name
-          example: struct
-        columns:
+          example: data/sales.orc
+        statistics:
           type: array
           items:
-            $ref: '#/components/schemas/ColumnType'
+            $ref: '#/components/schemas/ColumnStatistics'
+    FileList:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
     StripeInfo:
       type: object
       properties:
@@ -179,22 +178,17 @@ components:
         rowCount:
           type: integer
           example: 100000
-    FileInfo:
+    OrcSchema:
       type: object
       properties:
-        path:
+        typeName:
           type: string
-          example: data/sales.orc
-        size:
-          type: integer
-          description: File size in bytes
-          example: 10485760
-        rowCount:
-          type: integer
-          example: 1000000
-        stripes:
-          type: integer
-          example: 10
+          description: Top-level type name
+          example: struct
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
     ColumnStatistics:
       type: object
       properties:
@@ -219,16 +213,6 @@ components:
         maximum:
           type: string
           example: '999999'
-    ColumnStatisticsResponse:
-      type: object
-      properties:
-        filePath:
-          type: string
-          example: data/sales.orc
-        statistics:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnStatistics'
     ColumnType:
       type: object
       properties:
@@ -266,4 +250,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ColumnType'
+    FileInfo:
+      type: object
+      properties:
+        path:
+          type: string
+          example: data/sales.orc
+        size:
+          type: integer
+          description: File size in bytes
+          example: 10485760
+        rowCount:
+          type: integer
+          example: 1000000
+        stripes:
+          type: integer
+          example: 10
 x-generated-from: documentation
