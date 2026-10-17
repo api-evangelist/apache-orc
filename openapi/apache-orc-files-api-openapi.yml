@@ -108,6 +108,79 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OrcSchema:
+      type: object
+      properties:
+        typeName:
+          type: string
+          description: Top-level type name
+          example: struct
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnType'
+    ColumnStatistics:
+      type: object
+      properties:
+        columnIndex:
+          type: integer
+          example: 0
+        columnName:
+          type: string
+          example: customer_id
+        valueCount:
+          type: integer
+          example: 999500
+        nullCount:
+          type: integer
+          example: 500
+        hasMinimum:
+          type: boolean
+          example: true
+        minimum:
+          type: string
+          example: '1'
+        maximum:
+          type: string
+          example: '999999'
+    FileInfo:
+      type: object
+      properties:
+        path:
+          type: string
+          example: data/sales.orc
+        size:
+          type: integer
+          description: File size in bytes
+          example: 10485760
+        rowCount:
+          type: integer
+          example: 1000000
+        stripes:
+          type: integer
+          example: 10
+    FileList:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileInfo'
+    StripeInfo:
+      type: object
+      properties:
+        stripeIndex:
+          type: integer
+          example: 0
+        offset:
+          type: integer
+          example: 3
+        length:
+          type: integer
+          example: 1048576
+        rowCount:
+          type: integer
+          example: 100000
     FileMetadata:
       type: object
       properties:
@@ -146,73 +219,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StripeInfo'
-    ColumnStatisticsResponse:
-      type: object
-      properties:
-        filePath:
-          type: string
-          example: data/sales.orc
-        statistics:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnStatistics'
-    FileList:
-      type: object
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileInfo'
-    StripeInfo:
-      type: object
-      properties:
-        stripeIndex:
-          type: integer
-          example: 0
-        offset:
-          type: integer
-          example: 3
-        length:
-          type: integer
-          example: 1048576
-        rowCount:
-          type: integer
-          example: 100000
-    OrcSchema:
-      type: object
-      properties:
-        typeName:
-          type: string
-          description: Top-level type name
-          example: struct
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnType'
-    ColumnStatistics:
-      type: object
-      properties:
-        columnIndex:
-          type: integer
-          example: 0
-        columnName:
-          type: string
-          example: customer_id
-        valueCount:
-          type: integer
-          example: 999500
-        nullCount:
-          type: integer
-          example: 500
-        hasMinimum:
-          type: boolean
-          example: true
-        minimum:
-          type: string
-          example: '1'
-        maximum:
-          type: string
-          example: '999999'
     ColumnType:
       type: object
       properties:
@@ -250,20 +256,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ColumnType'
-    FileInfo:
+    ColumnStatisticsResponse:
       type: object
       properties:
-        path:
+        filePath:
           type: string
           example: data/sales.orc
-        size:
-          type: integer
-          description: File size in bytes
-          example: 10485760
-        rowCount:
-          type: integer
-          example: 1000000
-        stripes:
-          type: integer
-          example: 10
+        statistics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnStatistics'
 x-generated-from: documentation
