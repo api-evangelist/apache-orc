@@ -1,9 +1,12 @@
 {
   "provider": "apache-orc",
   "sources": [
+    "_original/apache-orc-openapi.json",
     "_ae-authored/apache-orc-tools-api.yaml"
   ],
   "outputs": [
+    "apache-orc-queues-api-openapi.yml",
+    "apache-orc-status-api-openapi.yml",
     "apache-orc-conversion-api-openapi.yml",
     "apache-orc-files-api-openapi.yml",
     "apache-orc-operations-api-openapi.yml"
@@ -12,12 +15,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-orc-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "apache-orc-tools-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apache-orc-tools-api.yaml: declared missing tag: Conversion",
     "apache-orc-tools-api.yaml: declared missing tag: Files",
     "apache-orc-tools-api.yaml: declared missing tag: Operations",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+2 apis, 5 total)"
   ],
   "skipped": [
     "apache-orc-conversion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
