@@ -1,4 +1,4 @@
-# Apache ORC (apache-orc)
+# Apache ORC
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,123 +66,189 @@
 
 Apache ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It provides high compression ratios and fast read performance for large-scale data processing with support for complex data types.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apache-orc/refs/heads/main/apis.yml)
+**Areas:** Big Data · Columnar Storage · Compression · File Format · Hadoop · Apache · Open Source
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Apache ORC on APIs.io
 
-## Tags:
+Everything profiled for Apache ORC is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-orc/](https://apis.io/providers/apache-orc/)** — or go straight to one of the APIs or properties below.
 
- - Big Data, Columnar Storage, Compression, File Format, Hadoop, Apache, Open Source
+### APIs (3)
 
-## Timestamps
+- [Apache ORC Conversion API](https://apis.io/apis/apache-orc/apache-orc-conversion-api/) — The Conversion API from Apache ORC — 1 operation(s) for conversion.
+- [Apache ORC Files API](https://apis.io/apis/apache-orc/apache-orc-files-api/) — The Files API from Apache ORC — 4 operation(s) for files.
+- [Apache ORC Operations API](https://apis.io/apis/apache-orc/apache-orc-operations-api/) — The Operations API from Apache ORC — 1 operation(s) for operations.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Apache ORC
-ORC provides Java and C++ APIs for reading and writing ORC columnar files, with support for predicate pushdown, column projection, compression codecs, and integration with Hive, Spark, Presto, and other query engines.
+#### Agentic access (1)
 
-**Human URL:** [https://orc.apache.org/docs/](https://orc.apache.org/docs/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Apache Orc Agentic Access](https://apis.io/agentic-access/apache-orc/apache-orc-agentic-access/)
 
- - C++, Columnar Format, Java, Apache, Open Source, Big Data
+#### JSON Schema (12)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://orc.apache.org/docs/)
-- [OpenAPI](openapi/apache-orc-tools-api.yaml)
+- [ColumnStatistics](https://apis.io/schemas/apache-orc/apache-orc-column-statistics/)
+- [ColumnStatisticsResponse](https://apis.io/schemas/apache-orc/apache-orc-column-statistics-response/)
+- [ColumnType](https://apis.io/schemas/apache-orc/apache-orc-column-type/)
+- [ConversionRequest](https://apis.io/schemas/apache-orc/apache-orc-conversion-request/)
+- [ConversionResult](https://apis.io/schemas/apache-orc/apache-orc-conversion-result/)
+- [FileInfo](https://apis.io/schemas/apache-orc/apache-orc-file-info/)
+- [FileList](https://apis.io/schemas/apache-orc/apache-orc-file-list/)
+- [FileMetadata](https://apis.io/schemas/apache-orc/apache-orc-file-metadata/)
+- [MergeRequest](https://apis.io/schemas/apache-orc/apache-orc-merge-request/)
+- [OperationResult](https://apis.io/schemas/apache-orc/apache-orc-operation-result/)
+- [OrcSchema](https://apis.io/schemas/apache-orc/apache-orc-orc-schema/)
+- [StripeInfo](https://apis.io/schemas/apache-orc/apache-orc-stripe-info/)
 
-## Common Properties
+#### JSON Structure (12)
 
-- [GitHubOrganization](https://github.com/apache/orc)
+Data models expressed in JSON Structure.
+
+- [Apache Orc Column Statistics Response Structure](https://apis.io/json-structure/apache-orc/apache-orc-column-statistics-response-structure/)
+- [Apache Orc Column Statistics Structure](https://apis.io/json-structure/apache-orc/apache-orc-column-statistics-structure/)
+- [Apache Orc Column Type Structure](https://apis.io/json-structure/apache-orc/apache-orc-column-type-structure/)
+- [Apache Orc Conversion Request Structure](https://apis.io/json-structure/apache-orc/apache-orc-conversion-request-structure/)
+- [Apache Orc Conversion Result Structure](https://apis.io/json-structure/apache-orc/apache-orc-conversion-result-structure/)
+- [Apache Orc File Info Structure](https://apis.io/json-structure/apache-orc/apache-orc-file-info-structure/)
+- [Apache Orc File List Structure](https://apis.io/json-structure/apache-orc/apache-orc-file-list-structure/)
+- [Apache Orc File Metadata Structure](https://apis.io/json-structure/apache-orc/apache-orc-file-metadata-structure/)
+- [Apache Orc Merge Request Structure](https://apis.io/json-structure/apache-orc/apache-orc-merge-request-structure/)
+- [Apache Orc Operation Result Structure](https://apis.io/json-structure/apache-orc/apache-orc-operation-result-structure/)
+- [Apache Orc Orc Schema Structure](https://apis.io/json-structure/apache-orc/apache-orc-orc-schema-structure/)
+- [Apache Orc Stripe Info Structure](https://apis.io/json-structure/apache-orc/apache-orc-stripe-info-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Apache Orc Context](https://apis.io/jsonld/apache-orc/apache-orc-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Apache Orc Vocabulary](https://apis.io/vocabularies/apache-orc/apache-orc-vocabulary/)
+
+#### Examples (12)
+
+Example requests and responses.
+
+- [Apache Orc Column Statistics Example](https://apis.io/examples/apache-orc/apache-orc-column-statistics-example/)
+- [Apache Orc Column Statistics Response Example](https://apis.io/examples/apache-orc/apache-orc-column-statistics-response-example/)
+- [Apache Orc Column Type Example](https://apis.io/examples/apache-orc/apache-orc-column-type-example/)
+- [Apache Orc Conversion Request Example](https://apis.io/examples/apache-orc/apache-orc-conversion-request-example/)
+- [Apache Orc Conversion Result Example](https://apis.io/examples/apache-orc/apache-orc-conversion-result-example/)
+- [Apache Orc File Info Example](https://apis.io/examples/apache-orc/apache-orc-file-info-example/)
+- [Apache Orc File List Example](https://apis.io/examples/apache-orc/apache-orc-file-list-example/)
+- [Apache Orc File Metadata Example](https://apis.io/examples/apache-orc/apache-orc-file-metadata-example/)
+- [Apache Orc Merge Request Example](https://apis.io/examples/apache-orc/apache-orc-merge-request-example/)
+- [Apache Orc Operation Result Example](https://apis.io/examples/apache-orc/apache-orc-operation-result-example/)
+- [Apache Orc Orc Schema Example](https://apis.io/examples/apache-orc/apache-orc-orc-schema-example/)
+- [Apache Orc Stripe Info Example](https://apis.io/examples/apache-orc/apache-orc-stripe-info-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Apache ORC Tools Conversion API](https://apis.io/collections/apache-orc/open-apache-orc-conversion-api/)
+- [Apache ORC Tools Conversion Files API](https://apis.io/collections/apache-orc/open-apache-orc-files-api/)
+- [Apache ORC Tools Conversion Operations API](https://apis.io/collections/apache-orc/open-apache-orc-operations-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache ORC — jsonschema rules](https://apis.io/rules/apache-orc/apache-orc-jsonschema-spectral-rules/)
+- [Apache ORC API Rules](https://apis.io/rules/apache-orc/apache-orc-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Orc Domain Security](https://apis.io/security/apache-orc/apache-orc-domain-security/)
+- [Apache Orc Vulnerability Disclosure](https://apis.io/security/apache-orc/apache-orc-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Orc Plans Pricing](https://apis.io/plans/apache-orc/apache-orc-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Orc Rate Limits](https://apis.io/rate-limits/apache-orc/apache-orc-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Orc Finops](https://apis.io/finops/apache-orc/apache-orc-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apache.org/)
 - [Documentation](https://orc.apache.org/)
-- [SpectralRules](rules/apache-orc-spectral-rules.yml)
-- [Vocabulary](vocabulary/apache-orc-vocabulary.yaml)
-- [NaftikoCapability](capabilities/orc-workflow.yaml)
-- [JSON-LD](json-ld/apache-orc-context.jsonld)
+- [Blog](https://orc.apache.org/news/)
+- [GitHub](https://github.com/apache/orc)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Columnar Storage | Stores data by column for efficient compression and query performance |
-| Predicate Pushdown | Skip reading data that does not match query predicates |
-| Column Projection | Read only the columns needed for a query |
-| ACID Support | Full ACID transactional support when used with Apache Hive |
-| Schema Evolution | Add, rename, and remove columns while preserving backward compatibility |
-| Compression | Supports ZLIB, Snappy, LZO, LZ4, and ZSTD compression codecs |
+**Kin Score 19.2** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 19.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 7.9 |
 
-| Name | Description |
-|------|-------------|
-| Hive Data Warehousing | Store Hive tables in highly efficient ORC format |
-| Spark Analytics | Process large ORC datasets with Apache Spark SQL |
-| Presto/Trino Queries | Fast analytical queries over ORC files with Presto or Trino |
-| Data Lake Storage | Efficient columnar storage for data lake architectures |
+**Agent readiness 17.9** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| Apache Hive | Native ORC support as default Hive storage format |
-| Apache Spark | ORC data source support in Spark SQL |
-| Presto/Trino | Fast ORC reading with native vectorized reader |
-| Apache Flink | ORC file format support for batch and streaming |
-| Apache Arrow | ORC to Arrow conversion for in-memory analytics |
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-orc/](https://apis.io/providers/apache-orc/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Apache ORC Tools API](openapi/apache-orc-tools-api.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache ORC: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [File Info](json-schema/apache-orc-file-info-schema.json)
-- [ORC Schema](json-schema/apache-orc-orc-schema-schema.json)
-- [Column Type](json-schema/apache-orc-column-type-schema.json)
-- [File Metadata](json-schema/apache-orc-file-metadata-schema.json)
-- [Column Statistics](json-schema/apache-orc-column-statistics-schema.json)
-- [And more...](json-schema/)
-
-### JSON Structure
-
-- [Apache ORC JSON Structures](json-structure/)
-
-### JSON-LD
-
-- [Apache ORC Context](json-ld/apache-orc-context.jsonld)
-
-### Examples
-
-- [Apache ORC Examples](examples/)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [ORC File Processing Workflow](capabilities/orc-workflow.yaml) | Apache ORC | 6 | Data Engineer, Data Analyst |
-
-## Vocabulary
-
-- [Apache ORC Vocabulary](vocabulary/apache-orc-vocabulary.yaml) — Unified taxonomy mapping ORC resources, actions, workflows, and personas
-
-## Rules
-
-- [Apache ORC Spectral Rules](rules/apache-orc-spectral-rules.yml) — Rules enforcing Apache ORC API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-orc/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
